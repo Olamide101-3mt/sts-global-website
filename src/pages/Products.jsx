@@ -2,47 +2,60 @@ import Reveal from "../components/Reveal";
 import { whatsappLink } from "../data/siteConfig";
 
 /*
- * Keep these as placeholders until STS Global confirms
- * the actual package prices, specifications and warranties.
+ * =========================================================
+ * SOLAR PACKAGES
+ * =========================================================
+
  */
+
 const PACKAGES = [
   {
-    name: "Starter — 1KVA",
-    note: "For small apartments and lower daily loads",
-    price: "₦[PRICE]",
-    items: [
-      "1KVA Inverter",
-      "2 × 200Ah Batteries",
-      "4 × 350W Panels",
-      "[WARRANTY] warranty",
-    ],
-    featured: false,
+    name: "SMS 2KVA Solar Hybrid Inverter System",
+    note: "SMS Inverter + 2KWh Lithium Battery + 4 X 300W Mono Panel",
+    price: "₦1 320 000",
+    warranty: "1 Year Warranty",
+    image: "/images/image1N.png",
+    placeholder: false,
   },
   {
-    name: "Standard — 2.5KVA",
-    note: "For homes with everyday appliances",
-    price: "₦[PRICE]",
-    items: [
-      "2.5KVA Inverter",
-      "4 × 200Ah Batteries",
-      "8 × 350W Panels",
-      "[WARRANTY] warranty",
-    ],
-    featured: true,
+    name: "SMS 3.6KVA Solar Hybrid Inverter System",
+    note: "SMS Inverter + 5KWh Lithium Battery + 8 X 450W Mono Panel",
+    price: "₦2 850 000",
+    warranty: "1 Year Warranty",
+    image:"/images/image1N.png" ,
+    placeholder: false,
   },
   {
-    name: "Business — 5KVA",
-    note: "For offices and small commercial use",
-    price: "₦[PRICE]",
-    items: [
-      "5KVA Inverter",
-      "8 × 200Ah Batteries",
-      "16 × 350W Panels",
-      "[WARRANTY] warranty",
-    ],
-    featured: false,
+    name: "SMS 4.2KVA Solar Hybrid Inverter System",
+    note: "SMS Inverter + 5KWh Lithium Battery + 9 X 500W Mono Panel",
+    price: "₦3 300 000",
+    warranty: "1 Year Warranty",
+    image: "/images/image1N.png",
+    placeholder: false,
+  },
+  {
+    name: "SMS 6.5KVA Solar Hybrid Inverter System",
+    note: "SMS Inverter + 10KWh Lithium Battery + 12 X 500W Mono Panel",
+    price: "₦4 620 000",
+    warranty: "1 Year Warranty",
+    image: "/images/image1N.png",
+    placeholder: false,
+  },
+  {
+    name: "SMS 24KVA Solar Hybrid Inverter System",
+    note: "SMS Inverter + 60KWh Lithium Battery + 40 X 500W Mono Panel",
+    price: "₦18 720 000",
+    warranty: "1 Year Warranty",
+    image: "/images/image1N.png",
+    placeholder: false,
   },
 ];
+
+/*
+ * =========================================================
+ * SOLAR SOLUTIONS
+ * =========================================================
+ */
 
 const SOLAR_SOLUTIONS = [
   {
@@ -71,6 +84,12 @@ const SOLAR_SOLUTIONS = [
   },
 ];
 
+/*
+ * =========================================================
+ * SECURITY & SAFETY
+ * =========================================================
+ */
+
 const SECURITY_SOLUTIONS = [
   {
     title: "CCTV Systems",
@@ -96,7 +115,19 @@ const SECURITY_SOLUTIONS = [
       "Security and access solutions designed around the requirements of your property and its users.",
     icon: "▣",
   },
+  {
+    title: "Electric Fence",
+    description:
+      "Electric fence solutions designed to provide an additional layer of security around your property.",
+    icon: "⚡",
+  },
 ];
+
+/*
+ * =========================================================
+ * AUTOMATION
+ * =========================================================
+ */
 
 const AUTOMATION_SOLUTIONS = [
   {
@@ -119,6 +150,12 @@ const AUTOMATION_SOLUTIONS = [
   },
 ];
 
+/*
+ * =========================================================
+ * SOLUTION CARD
+ * =========================================================
+ */
+
 function SolutionCard({ title, description, icon }) {
   return (
     <div className="group bg-white border border-grey-line p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -138,6 +175,12 @@ function SolutionCard({ title, description, icon }) {
     </div>
   );
 }
+
+/*
+ * =========================================================
+ * SERVICE SECTION
+ * =========================================================
+ */
 
 function ServiceSection({ eyebrow, title, description, items }) {
   return (
@@ -174,12 +217,130 @@ function ServiceSection({ eyebrow, title, description, items }) {
   );
 }
 
+/*
+ * =========================================================
+ * PACKAGE CARD
+ * =========================================================
+ */
+
+function PackageCard({ pkg }) {
+  return (
+    <article
+      className={`group relative bg-white border overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${
+        pkg.placeholder
+          ? "border-grey-line"
+          : "border-green"
+      }`}
+    >
+      {/* Featured / available badge */}
+      {!pkg.placeholder && (
+        <div className="absolute top-4 left-4 z-20">
+          <span className="inline-flex items-center gap-2 bg-red text-white text-[10px] font-semibold px-3 py-2 tracking-widest uppercase shadow-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+            1 Year Warranty
+          </span>
+        </div>
+      )}
+
+      {/* =====================================================
+          PACKAGE IMAGE
+      ====================================================== */}
+
+      <div className="relative bg-[#F3F3F1] aspect-[4/3] overflow-hidden">
+        {pkg.image ? (
+          <img
+            src={pkg.image}
+            alt={`${pkg.name} - ${pkg.note}`}
+            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center">
+            <div className="w-16 h-16 border-2 border-dashed border-grey-line flex items-center justify-center text-green text-2xl mb-4">
+              +
+            </div>
+
+            <span className="text-sm font-medium text-green mb-1">
+              Package image
+            </span>
+
+            <span className="text-xs text-grey-mid">
+              Coming soon
+            </span>
+          </div>
+        )}
+
+        {/* Bottom image gradient */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+      </div>
+
+      {/* =====================================================
+          PACKAGE INFORMATION
+      ====================================================== */}
+
+      <div className="p-6 md:p-7">
+        {/* Warranty
+        <div className="mb-5">
+          <span className="inline-flex items-center gap-2 bg-gold text-[#3A2C00] px-4 py-2 text-xs font-bold uppercase tracking-wide shadow-sm">
+            <span>✓</span>
+            {pkg.warranty}
+          </span>
+        </div> */}
+
+        {/* Package name */}
+        <h3 className="text-2xl md:text-[28px] leading-tight font-semibold text-ink mb-3">
+          {pkg.name}
+        </h3>
+
+        {/* Description */}
+        <p className="text-sm leading-7 text-grey-mid min-h-[50px] mb-6">
+          {pkg.note}
+        </p>
+
+        {/* Divider */}
+        <div className="border-t border-grey-line pt-5">
+          <div className="text-[10px] uppercase tracking-widest text-grey-mid mb-1">
+            Package Price
+          </div>
+
+          <div className="font-display text-[28px] md:text-[32px] font-medium text-green mb-6">
+            {pkg.price}
+          </div>
+
+          <a
+            href={whatsappLink(
+              `Hi, I'd like to enquire about the ${pkg.name} solar package.`
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block text-center py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5 ${
+              pkg.placeholder
+                ? "border border-grey-line text-ink hover:border-green hover:text-green"
+                : "bg-green hover:bg-green-deep text-white"
+            }`}
+          >
+            {pkg.placeholder
+              ? "Package Details Coming Soon"
+              : "Enquire about this package →"}
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/*
+ * =========================================================
+ * MAIN PRODUCT PAGE
+ * =========================================================
+ */
+
 export default function Products() {
   return (
     <main className="bg-cream min-h-screen overflow-hidden">
       {/* =========================================================
           PAGE HERO
       ========================================================== */}
+
       <section className="pt-16 md:pt-24 pb-14 md:pb-20">
         <div className="max-w-6xl mx-auto px-6">
           <Reveal>
@@ -210,6 +371,7 @@ export default function Products() {
         {/* =========================================================
             SOLAR PACKAGES
         ========================================================== */}
+
         <section className="pb-16 md:pb-20">
           <Reveal>
             <div className="flex items-center gap-3 mb-3">
@@ -238,63 +400,13 @@ export default function Products() {
             </div>
           </Reveal>
 
-          <Reveal stagger className="grid md:grid-cols-3 gap-6">
+          {/* =====================================================
+              PACKAGE CARDS
+          ====================================================== */}
+
+          <Reveal stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PACKAGES.map((pkg) => (
-              <div
-                key={pkg.name}
-                className={`relative bg-white p-7 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  pkg.featured
-                    ? "border-green border-2"
-                    : "border-grey-line"
-                }`}
-              >
-                {pkg.featured && (
-                  <span className="absolute -top-3 left-7 bg-red text-white text-[10px] font-semibold px-3 py-1.5 tracking-widest">
-                    MOST CHOSEN
-                  </span>
-                )}
-
-                <div className="w-10 h-10 flex items-center justify-center bg-cream text-green mb-6">
-                  ⚡
-                </div>
-
-                <h3 className="text-xl font-semibold mb-2">{pkg.name}</h3>
-
-                <p className="text-sm text-grey-mid min-h-[42px]">
-                  {pkg.note}
-                </p>
-
-                <div className="font-display text-[27px] font-medium my-5">
-                  {pkg.price}
-                </div>
-
-                <ul className="text-[13.5px] mb-7">
-                  {pkg.items.map((item) => (
-                    <li
-                      key={item}
-                      className="py-3 border-t border-grey-line flex gap-3"
-                    >
-                      <span className="text-red font-semibold">+</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={whatsappLink(
-                    `Hi, I'd like to enquire about the ${pkg.name} solar package.`
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block text-center py-3 text-sm transition-colors ${
-                    pkg.featured
-                      ? "bg-green hover:bg-green-deep text-white"
-                      : "border border-grey-line hover:border-green hover:text-green text-ink"
-                  }`}
-                >
-                  Enquire about this package →
-                </a>
-              </div>
+              <PackageCard key={pkg.name} pkg={pkg} />
             ))}
           </Reveal>
         </section>
@@ -302,6 +414,7 @@ export default function Products() {
         {/* =========================================================
             SOLAR SOLUTIONS
         ========================================================== */}
+
         <ServiceSection
           eyebrow="01 · Solar"
           title="Reliable power starts with the right system."
@@ -312,6 +425,7 @@ export default function Products() {
         {/* =========================================================
             SECURITY & SAFETY
         ========================================================== */}
+
         <ServiceSection
           eyebrow="02 · Security & Safety"
           title="Protect what matters to you."
@@ -322,6 +436,7 @@ export default function Products() {
         {/* =========================================================
             AUTOMATION
         ========================================================== */}
+
         <ServiceSection
           eyebrow="03 · Automation"
           title="Make your property smarter."
@@ -332,6 +447,7 @@ export default function Products() {
         {/* =========================================================
             FINAL CTA
         ========================================================== */}
+
         <section className="py-16 md:py-20 border-t border-grey-line">
           <Reveal>
             <div className="relative overflow-hidden bg-navy p-8 md:p-12 lg:p-14">
@@ -384,4 +500,3 @@ export default function Products() {
     </main>
   );
 }
-

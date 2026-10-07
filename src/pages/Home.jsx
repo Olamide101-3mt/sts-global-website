@@ -130,114 +130,54 @@ export default function Home() {
         </div>
       </Reveal>
 
+      {/* ==================== RIGHT: COMPANY VIDEO ==================== */}
+{/* ==================== RIGHT: COMPANY VIDEO ==================== */}
+{/* ==================== RIGHT: COMPANY VIDEO ==================== */}
+<Reveal delay={120}>
+  <div className="relative w-full">
+    <div className="relative w-full h-[420px] sm:h-[500px] overflow-hidden rounded-3xl bg-[#0D2136] shadow-2xl shadow-[#0D2136]/20">
 
-      {/* ==================== RIGHT: VIDEO PLACEHOLDER ==================== */}
-      <Reveal delay={120}>
-        <div className="relative">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label="STS Global company video"
+        className="absolute inset-0 w-full h-full object-cover scale-[1.48]"
+      >
+        <source
+          src="/videos/video1.mp4"
+          type="video/mp4"
+        />
 
-          {/* Main video container */}
-          <div className="group relative overflow-hidden rounded-3xl bg-[#0D2136] shadow-2xl shadow-[#0D2136]/20">
-
-            {/* Video placeholder */}
-            <div className="relative flex h-[420px] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#0D2136] via-[#123B4F] to-[#0F6B45] sm:h-[500px]">
-
-              {/* Decorative solar-inspired background */}
-              <div
-                aria-hidden="true"
-                className="absolute -right-20 -top-20 h-64 w-64 rounded-full border border-white/10"
-              />
-
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full border border-white/10"
-              />
-
-              {/* Grid texture */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(255,255,255,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.25) 1px, transparent 1px)",
-                  backgroundSize: "40px 40px",
-                }}
-              />
-
-              {/* Video content */}
-              <div className="relative z-10 flex flex-col items-center text-center">
-
-                {/* Play button */}
-                <button
-                  type="button"
-                  aria-label="Play STS Global company video"
-                  className="group/play flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white shadow-2xl backdrop-blur-md transition duration-300 hover:scale-110 hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#123B4F]"
-                >
-                  <span className="ml-1 text-2xl transition-transform duration-300 group-hover/play:scale-110">
-                    ▶
-                  </span>
-                </button>
-
-                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#D4A72C]">
-                  STS Global
-                </p>
-
-                <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
-                  See how we power and protect
-                </h2>
-
-                <p className="mt-2 max-w-sm px-6 text-sm leading-6 text-white/70">
-                  Company and project video coming soon.
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom overlay information */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0D2136]/80 to-transparent px-6 pb-5 pt-16 sm:px-8">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/60">
-                    Solar · Security · Automation
-                  </p>
-
-                  <p className="mt-1 text-sm font-medium text-white">
-                    Professionally designed solutions for your property.
-                  </p>
-                </div>
-
-                <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-lg backdrop-blur-sm sm:flex">
-                  ☀
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Floating calculator card */}
-          <div className="absolute -bottom-6 left-5 right-5 rounded-2xl border border-white/70 bg-white/95 p-4 shadow-xl backdrop-blur sm:left-auto sm:right-6 sm:w-72">
-
-            <div className="flex items-center gap-3">
-
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0F6B45]/10 text-xl">
-                ⚡
-              </div>
-
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
-                  Start with your load
-                </p>
-
-                <p className="mt-0.5 text-sm font-semibold text-[#0D2136]">
-                  Estimate your solar needs
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </Reveal>
+        Your browser does not support the video tag.
+      </video>
 
     </div>
+  </div>
+</Reveal>
+    </div>
+ 
+    {/* Floating calculator card
+    <div className="absolute -bottom-6 left-5 right-5 rounded-2xl border border-white/70 bg-white/95 p-4 shadow-xl backdrop-blur sm:left-auto sm:right-6 sm:w-72">
+      <div className="flex items-center gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0F6B45]/10 text-xl">
+          ⚡
+        </div>
+
+        <div>
+          <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            Start with your load
+          </p>
+
+          <p className="mt-0.5 text-sm font-semibold text-[#0D2136]">
+            Estimate your solar needs
+          </p>
+        </div>
+         *
+      </div>
+    </div> */}
   </div>
 </section>
 
@@ -254,7 +194,7 @@ export default function Home() {
         </p>
 
         <h2 className="mt-2 text-xl font-semibold tracking-tight text-[#0D2136] sm:text-2xl">
-          Built around your needs. Delivered by one team.
+          Solar, security and building technology from one team in Lagos
         </h2>
       </div>
 
