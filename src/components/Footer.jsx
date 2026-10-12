@@ -4,7 +4,7 @@ const FOOTER_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Products & Services", href: "/products-services" },
-  { label: "Calculator", href: "/calculator" },
+  { label: "Calculator", href: "/load-calculator" },
   { label: "Reviews", href: "/reviews" },
   { label: "Contact", href: "/contact" },
 ];
