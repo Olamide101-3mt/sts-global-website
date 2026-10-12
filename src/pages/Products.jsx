@@ -65,6 +65,7 @@ const SOLAR_SOLUTIONS = [
     icon: "☀",
   },
   {
+    id: "inverters",
     title: "Inverters",
     description:
       "Inverter solutions that help convert and manage electrical power for your home or business.",
@@ -92,6 +93,7 @@ const SOLAR_SOLUTIONS = [
 
 const SECURITY_SOLUTIONS = [
   {
+    id: "security",
     title: "CCTV Systems",
     description:
       "Security camera solutions designed to help you monitor and protect your home, office or business premises.",
@@ -131,6 +133,7 @@ const SECURITY_SOLUTIONS = [
 
 const AUTOMATION_SOLUTIONS = [
   {
+    id:"automation",
     title: "Property Automation",
     description:
       "Smart automation solutions designed to make selected property functions easier and more convenient to manage.",
@@ -202,6 +205,7 @@ function ServiceSection({ eyebrow, title, description, items }) {
           </div>
         </Reveal>
 
+       <div id="inverters"> 
         <Reveal stagger className="grid sm:grid-cols-2 gap-5">
           {items.map((item) => (
             <SolutionCard
@@ -212,6 +216,7 @@ function ServiceSection({ eyebrow, title, description, items }) {
             />
           ))}
         </Reveal>
+      </div>
       </div>
     </section>
   );
@@ -414,35 +419,38 @@ export default function Products() {
         {/* =========================================================
             SOLAR SOLUTIONS
         ========================================================== */}
-
+      <div id="solar">
         <ServiceSection
           eyebrow="01 · Solar"
           title="Reliable power starts with the right system."
           description="Explore solar solutions for generating, managing and storing power for your home or business."
           items={SOLAR_SOLUTIONS}
         />
+      </div>
 
         {/* =========================================================
             SECURITY & SAFETY
         ========================================================== */}
-
+      <div id="security">
         <ServiceSection
           eyebrow="02 · Security & Safety"
           title="Protect what matters to you."
           description="Security and safety solutions designed to give you greater awareness and control over your property."
           items={SECURITY_SOLUTIONS}
         />
+      </div>
 
         {/* =========================================================
             AUTOMATION
         ========================================================== */}
-
+      <div id="automation">
         <ServiceSection
           eyebrow="03 · Automation"
           title="Make your property smarter."
           description="Practical automation solutions designed to improve convenience, control and everyday property management."
           items={AUTOMATION_SOLUTIONS}
         />
+      </div>
 
         {/* =========================================================
             FINAL CTA
@@ -467,7 +475,7 @@ export default function Products() {
                   Let&apos;s find the right solution for your property.
                 </h2>
 
-                <p className="text-white/75 leading-7 max-w-2xl mb-8">
+                <p className="text-white/100 leading-7 max-w-2xl mb-8">
                   Not sure which solar, security or automation solution is
                   right for you? Tell us what you need and we can discuss the
                   requirements for your property.

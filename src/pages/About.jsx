@@ -85,145 +85,197 @@ export default function About() {
         {/* =========================================================
             VALUES
         ========================================================== */}
-        <section className="mb-16 md:mb-20">
-          <Reveal>
-            <div className="max-w-2xl mb-8">
-              <div className="text-green text-xs font-semibold tracking-widest uppercase mb-3">
-                What guides us
-              </div>
 
-              <h2 className="text-3xl md:text-[38px] leading-tight">
-                The way we approach every project.
-              </h2>
-            </div>
-          </Reveal>
+{/* =========================================================
+    WHY STS GLOBAL
+========================================================== */}
+<section className="mb-16 md:mb-20">
+  <Reveal>
+    <div className="max-w-3xl mb-10 md:mb-12">
+      <div className="flex items-center gap-3 mb-4">
+        <span className="block w-8 h-[2px] bg-red" />
 
-          <Reveal
-            stagger
-            className="grid sm:grid-cols-3 gap-px bg-grey-line border border-grey-line"
-          >
-            {VALUES.map((value, index) => (
-              <div
-                key={value.title}
-                className="group bg-white p-7 md:p-8 transition-all duration-300 hover:bg-[#F3F1E9]"
-              >
-                <div className="flex items-center justify-between mb-7">
-                  <span className="text-red text-xs font-semibold">
-                    0{index + 1}
-                  </span>
-
-                  <span className="text-grey-mid transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
-
-                <h3 className="font-display text-[17px] font-semibold mb-3">
-                  {value.title}
-                </h3>
-
-                <p className="text-sm leading-6 text-grey-mid">
-                  {value.text}
-                </p>
-              </div>
-            ))}
-          </Reveal>
-        </section>
-
-        {/* =========================================================
-            JOURNEY
-        ========================================================== */}
-        <section className="mb-16 md:mb-20">
-          <Reveal>
-            <div className="grid md:grid-cols-[0.7fr_1.3fr] gap-10 lg:gap-16">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="block w-8 h-[2px] bg-red" />
-
-                  <div className="text-green text-xs font-semibold tracking-widest uppercase">
-                    Our journey
-                  </div>
-                </div>
-
-                <h2 className="text-3xl md:text-[38px] leading-tight mb-4">
-                  How STS Global got here.
-                </h2>
-
-                <p className="text-grey-mid leading-7 max-w-md">
-                  The story, milestones and growth of STS Global will be added
-                  here once the company provides the confirmed history.
-                </p>
-              </div>
-
-              <div className="border-l-2 border-grey-line pl-7 md:pl-9">
-                {TIMELINE.map((item, index) => (
-                  <div
-                    key={`${item.year}-${index}`}
-                    className="relative pb-9 last:pb-0"
-                  >
-                    <div className="absolute -left-[37px] md:-left-[41px] top-1.5 w-3 h-3 bg-red rounded-full border-2 border-cream" />
-
-                    <div className="font-display text-green font-medium text-sm mb-1.5">
-                      {item.year}
-                    </div>
-
-                    <p className="text-grey-mid leading-7">
-                      {item.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </section>
-
-        {/* =========================================================
-            FINAL CTA
-        ========================================================== */}
-        <Reveal>
-          <section className="relative overflow-hidden bg-navy text-white p-8 md:p-12 lg:p-14">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-red opacity-90 translate-x-16 -translate-y-16 rotate-45" />
-
-            <div className="relative z-10 max-w-3xl">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="block w-8 h-[2px] bg-red" />
-
-                <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-                  Let&apos;s work together
-                </span>
-              </div>
-
-              <h2 className="text-3xl md:text-[40px] leading-tight mb-5">
-                Looking for the right solution for your property?
-              </h2>
-
-              <p className="text-white/70 leading-7 max-w-2xl mb-8">
-                Tell us what you need and let&apos;s discuss a practical
-                solution for your home, office or business.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={whatsappLink(
-                    "Hi, I'd like to discuss a solution for my property."
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-green hover:bg-green-deep text-white px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  Talk to STS Global →
-                </a>
-
-                <a
-                  href="/products"
-                  className="inline-flex items-center justify-center border border-white/35 hover:border-white text-white px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  View Products &amp; Services
-                </a>
-              </div>
-            </div>
-          </section>
-        </Reveal>
+        <span className="text-green text-xs font-semibold tracking-widest uppercase">
+          Why STS Global
+        </span>
       </div>
-    </main>
-  );
-}
+
+      <h2 className="text-3xl md:text-[42px] leading-tight mb-5">
+        Why homes and businesses across Lagos choose STS Global
+      </h2>
+    </div>
+  </Reveal>
+
+  {/* Proof figures */}
+  <Reveal stagger className="grid sm:grid-cols-3 gap-px bg-grey-line border border-grey-line mb-12">
+    <div className="bg-white p-6 md:p-8">
+      <p className="font-display text-3xl md:text-4xl font-semibold text-green mb-2">
+        300+
+      </p>
+      <p className="text-sm text-grey-mid leading-6">
+        Installations across Lagos
+      </p>
+    </div>
+
+    <div className="bg-white p-6 md:p-8">
+      <p className="font-display text-3xl md:text-4xl font-semibold text-green mb-2">
+        Since 2014
+      </p>
+      <p className="text-sm text-grey-mid leading-6">
+        12 years based in Ikorodu
+      </p>
+    </div>
+
+    <div className="bg-white p-6 md:p-8">
+      <p className="font-display text-3xl md:text-4xl font-semibold text-green mb-2">
+        4.8 <span className="text-gold">★</span>
+      </p>
+      <p className="text-sm text-grey-mid leading-6">
+        From 64 Google reviews
+      </p>
+    </div>
+  </Reveal>
+
+  {/* Six reasons */}
+  <Reveal stagger className="grid md:grid-cols-2 gap-px bg-grey-line border border-grey-line">
+    {/* 01 */}
+    <article className="group bg-white p-7 md:p-8 transition-colors duration-300 hover:bg-[#F3F1E9]">
+      <p className="text-red text-sm font-semibold mb-5">01</p>
+
+      <h3 className="text-xl font-semibold text-ink mb-3">
+        One accountable team since 2014
+      </h3>
+
+      <p className="text-sm md:text-base text-grey-mid leading-7 mb-5">
+        We started with{" "}
+        <a href="/solar-installation-ikorodu/" className="text-green underline underline-offset-4 hover:text-red">
+          solar installation in Ikorodu
+        </a>{" "}
+        in 2014. Today we also supply and install CCTV and IP cameras,{" "}
+        <a href="/security/electric-fence/" className="text-green underline underline-offset-4 hover:text-red">
+          electric fencing
+        </a>
+        , automatic gates, biometric and RFID{" "}
+        <a href="/access/access-control/" className="text-green underline underline-offset-4 hover:text-red">
+          access control
+        </a>
+        , smart home systems,{" "}
+        <a href="/building-tech/intercom-pabx/" className="text-green underline underline-offset-4 hover:text-red">
+          PABX intercoms
+        </a>{" "}
+        and elevators. Whatever you buy, one team answers for it.
+      </p>
+    </article>
+
+    {/* 02 */}
+    <article className="group bg-white p-7 md:p-8 transition-colors duration-300 hover:bg-[#F3F1E9]">
+      <p className="text-red text-sm font-semibold mb-5">02</p>
+
+      <h3 className="text-xl font-semibold text-ink mb-3">
+        Systems sized properly, quoted in writing
+      </h3>
+
+      <p className="text-sm md:text-base text-grey-mid leading-7">
+        Every job begins with a free site visit or our solar load calculator.
+        We size inverters, batteries and panels to your load and backup hours,
+        then give you a written quote. If a smaller system will do, we'll tell you.
+      </p>
+
+      <a
+        href="/load-calculator"
+        className="inline-flex items-center mt-5 text-sm font-medium text-green hover:text-red transition-colors"
+      >
+        Try the solar load calculator →
+      </a>
+    </article>
+
+    {/* 03 */}
+    <article className="group bg-white p-7 md:p-8 transition-colors duration-300 hover:bg-[#F3F1E9]">
+      <p className="text-red text-sm font-semibold mb-5">03</p>
+
+      <h3 className="text-xl font-semibold text-ink mb-3">
+        Technicians, not salespeople
+      </h3>
+
+      <p className="text-sm md:text-base text-grey-mid leading-7">
+        We don't subcontract. The technicians you'll meet below assess,
+        install and maintain every system we sell.
+      </p>
+    </article>
+
+    {/* 04 */}
+    <article className="group bg-white p-7 md:p-8 transition-colors duration-300 hover:bg-[#F3F1E9]">
+      <p className="text-red text-sm font-semibold mb-5">04</p>
+
+      <h3 className="text-xl font-semibold text-ink mb-3">
+        Genuine brands, warranties in your name
+      </h3>
+
+      <p className="text-sm md:text-base text-grey-mid leading-7">
+        We stock trusted brands of inverters,{" "}
+        <a href="/solar/batteries/" className="text-green underline underline-offset-4 hover:text-red">
+          lithium and tubular batteries
+        </a>
+        , solar panels and security equipment, and register every warranty
+        in your name. If something fails within warranty, we handle the claim.
+      </p>
+    </article>
+
+    {/* 05 */}
+    <article className="group bg-white p-7 md:p-8 transition-colors duration-300 hover:bg-[#F3F1E9]">
+      <p className="text-red text-sm font-semibold mb-5">05</p>
+
+      <h3 className="text-xl font-semibold text-ink mb-3">
+        Nationwide delivery from Ikorodu
+      </h3>
+
+      <p className="text-sm md:text-base text-grey-mid leading-7">
+        Products ship to clients in every state. Installation is carried
+        out by our own team across Lagos.
+      </p>
+    </article>
+
+    {/* 06 */}
+    <article className="group bg-white p-7 md:p-8 transition-colors duration-300 hover:bg-[#F3F1E9]">
+      <p className="text-red text-sm font-semibold mb-5">06</p>
+
+      <h3 className="text-xl font-semibold text-ink mb-3">
+        A direct line after installation
+      </h3>
+
+      <p className="text-sm md:text-base text-grey-mid leading-7">
+        Every client gets WhatsApp access to the team who did their job.
+        We reply within 2 hours, Monday to Saturday, and we come back if
+        something needs attention.
+      </p>
+    </article>
+  </Reveal>
+
+  {/* Contact actions */}
+  <Reveal delay={100}>
+    <div className="flex flex-col sm:flex-row gap-3 mt-8">
+      <a
+        href={whatsappLink(
+          "Hi, I'd like to discuss a solar, security or building technology solution with STS Global."
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center bg-green hover:bg-green-deep text-white px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
+      >
+        Chat on WhatsApp →
+      </a>
+
+      <a
+        href="/contact"
+        className="inline-flex items-center justify-center border border-grey-line bg-white hover:border-green hover:text-green text-ink px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
+      >
+        Book a free site visit →
+      </a>
+    </div>
+  </Reveal>
+</section>
+</div>
+</main>
+
+      );
+    }

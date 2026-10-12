@@ -93,15 +93,33 @@ export default function Contact() {
                 </span>
               </a>
 
-              <div className="aspect-video mt-6 border border-white/15 overflow-hidden">
-                <iframe
-                  title="STS Global location"
-                  className="w-full h-full grayscale contrast-125"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?q=Ikorodu,Lagos,Nigeria&output=embed"
-                />
-              </div>
+              
+
+
+{/* Clickable Google Maps location */}
+<a
+  href="https://www.google.com/maps/search/?api=1&query=Service+Technology+Solutions+Global%2C+Katola+Estate+Rd%2C+Ikorodu%2C+104101%2C+Lagos%2C+Nigeria"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open Service Technology Solutions Global on Google Maps"
+  className="block aspect-video mt-6 border border-white/15 overflow-hidden group relative"
+>
+  <iframe
+    title="Service Technology Solutions Global location"
+    className="w-full h-full grayscale contrast-125 pointer-events-none"
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=Service+Technology+Solutions+Global%2C+Katola+Estate+Rd%2C+Ikorodu%2C+104101%2C+Lagos%2C+Nigeria&output=embed"
+  />
+
+  {/* Hover message */}
+  <span className="absolute bottom-0 left-0 right-0 bg-ink/85 text-white text-xs sm:text-sm px-4 py-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+    Click to open our location in Google Maps →
+  </span>
+</a>
+
+
+
             </div>
           </div>
         </Reveal>
