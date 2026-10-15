@@ -148,21 +148,21 @@ export default function About() {
 
       <p className="text-sm md:text-base text-grey-mid leading-7 mb-5">
         We started with{" "}
-        <a href="/solar-installation-ikorodu/" className="text-green underline underline-offset-4 hover:text-red">
+        <a href="/#projects" className="text-green underline underline-offset-4 hover:text-red">
           solar installation in Ikorodu
         </a>{" "}
         in 2014. Today we also supply and install CCTV and IP cameras,{" "}
-        <a href="/security/electric-fence/" className="text-green underline underline-offset-4 hover:text-red">
+        <a href="/#projects" className="text-green underline underline-offset-4 hover:text-red">
           electric fencing
         </a>
         , automatic gates, biometric and RFID{" "}
-        <a href="/access/access-control/" className="text-green underline underline-offset-4 hover:text-red">
+        <a href="/#projects" className="text-green underline underline-offset-4 hover:text-red">
           access control
         </a>
         , smart home systems,{" "}
-        <a href="/building-tech/intercom-pabx/" className="text-green underline underline-offset-4 hover:text-red">
+        <p >
           PABX intercoms
-        </a>{" "}
+        </p>
         and elevators. Whatever you buy, one team answers for it.
       </p>
     </article>
@@ -213,7 +213,7 @@ export default function About() {
 
       <p className="text-sm md:text-base text-grey-mid leading-7">
         We stock trusted brands of inverters,{" "}
-        <a href="/solar/batteries/" className="text-green underline underline-offset-4 hover:text-red">
+        <a href="/#projects" className="text-green underline underline-offset-4 hover:text-red">
           lithium and tubular batteries
         </a>
         , solar panels and security equipment, and register every warranty

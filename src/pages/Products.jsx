@@ -58,7 +58,7 @@ const PACKAGES = [
  */
 
 const SOLAR_SOLUTIONS = [
-  {
+  { id: "solar",
     title: "Solar Panels",
     description:
       "Solar panel solutions designed to convert available sunlight into usable electrical power for your property.",
@@ -185,9 +185,9 @@ function SolutionCard({ title, description, icon }) {
  * =========================================================
  */
 
-function ServiceSection({ eyebrow, title, description, items }) {
+function ServiceSection({ id, eyebrow, title, description, items }) {
   return (
-    <section className="py-16 md:py-20 border-t border-grey-line">
+    <section id={id} className="py-16 md:py-20 border-t border-grey-line">
       <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16">
         <Reveal>
           <div className="lg:sticky lg:top-24 lg:self-start">
@@ -419,38 +419,35 @@ export default function Products() {
         {/* =========================================================
             SOLAR SOLUTIONS
         ========================================================== */}
-      <div id="solar">
         <ServiceSection
+          id="solar"
           eyebrow="01 · Solar"
           title="Reliable power starts with the right system."
           description="Explore solar solutions for generating, managing and storing power for your home or business."
           items={SOLAR_SOLUTIONS}
         />
-      </div>
 
         {/* =========================================================
             SECURITY & SAFETY
         ========================================================== */}
-      <div id="security">
         <ServiceSection
+          id="security"
           eyebrow="02 · Security & Safety"
           title="Protect what matters to you."
           description="Security and safety solutions designed to give you greater awareness and control over your property."
           items={SECURITY_SOLUTIONS}
         />
-      </div>
 
         {/* =========================================================
             AUTOMATION
         ========================================================== */}
-      <div id="automation">
         <ServiceSection
+          id="automation"
           eyebrow="03 · Automation"
           title="Make your property smarter."
           description="Practical automation solutions designed to improve convenience, control and everyday property management."
           items={AUTOMATION_SOLUTIONS}
         />
-      </div>
 
         {/* =========================================================
             FINAL CTA
@@ -471,11 +468,11 @@ export default function Products() {
                   </div>
                 </div>
 
-                <h2 className="text-white text-3xl md:text-[40px] leading-tight font-semibold mb-5">
+                <h2 className="text-black text-3xl md:text-[40px] leading-tight font-semibold mb-5">
                   Let&apos;s find the right solution for your property.
                 </h2>
 
-                <p className="text-white/100 leading-7 max-w-2xl mb-8">
+                <p className="text-black/100 leading-7 max-w-2xl mb-8">
                   Not sure which solar, security or automation solution is
                   right for you? Tell us what you need and we can discuss the
                   requirements for your property.
@@ -494,8 +491,8 @@ export default function Products() {
                   </a>
 
                   <a
-                    href="/calculator"
-                    className="inline-flex items-center justify-center border border-white/40 hover:border-white text-white px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
+                    href="/load-calculator"
+                    className="inline-flex items-center justify-center border border-white/40 bg-red hover:border-white text-white px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
                   >
                     Calculate my solar needs
                   </a>

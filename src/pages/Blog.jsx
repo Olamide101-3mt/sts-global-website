@@ -186,11 +186,11 @@ export default function Blog() {
                 </span>
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-semibold leading-tight mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold leading-tight mb-4 text-black">
                 Have questions about solar, security or automation?
               </h2>
 
-              <p className="text-white/70 text-sm leading-7 mb-7">
+              <p className="text-black text-sm leading-7 mb-7">
                 If you&apos;re not sure what solution is right for your
                 property, speak with STS Global about your requirements.
               </p>

@@ -30,13 +30,13 @@ const SERVICES = [
 const PROJECT_CATEGORIES = ["All", "Solar", "Electric Fence", "CCTV", "Batteries", "Inverters", "Automation"];
 
 const PROJECTS = [
-  { id: 1, title: "Solar Installation", category: "Solar", description: "Solar panels and a power system installed for a property." },
-  { id: 2, title: "Electric Fence Installation", category: "Electric Fence", description: "Perimeter electric fencing for added property security." },
-  { id: 3, title: "CCTV Camera System", category: "CCTV", description: "A CCTV setup to help monitor the property." },
-  { id: 4, title: "Battery Backup System", category: "Batteries", description: "Battery storage as part of a backup power solution." },
-  { id: 5, title: "Inverter Installation", category: "Inverters", description: "An inverter setup designed around the property's power needs." },
-  { id: 6, title: "Smart Automation", category: "Automation", description: "Automation technology designed for convenience and control." },
-  { id: 7, title: "Integrated Solar & Security", category: "Solar", description: "A combined solution for power and property needs." },
+  { id: 1, title: "Solar Installation", category: "Solar", description: "Solar panels and a power system installed for a property.", image:"images/solar1.jpg" },
+  { id: 2, title: "Electric Fence Installation", category: "Electric Fence", description: "Perimeter electric fencing for added property security.", image: "images/electric.jpg" },
+  { id: 3, title: "CCTV Camera System", category: "CCTV", description: "A CCTV setup to help monitor the property.", image:"images/cctv.png" },
+  { id: 4, title: "Battery Backup System", category: "Batteries", description: "Battery storage as part of a backup power solution.", image:"images/battery.png" },
+  { id: 5, title: "Inverter Installation", category: "Inverters", description: "An inverter setup designed around the property's power needs.", image: "images/inverter.jpg" },
+  { id: 6, title: "Smart Automation", category: "Automation", description: "Automation technology designed for convenience and control.", image: "images/gate.jpg" },
+
 ];
 
 const TESTIMONIALS = [
@@ -439,7 +439,7 @@ export default function Home() {
 
       <Link
 
-        to="/products"
+        to="/products-services"
 
         className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
 
@@ -539,7 +539,7 @@ export default function Home() {
 
       <Link
 
-        to="/products"
+        to="/products-services"
 
         className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
 
@@ -641,7 +641,7 @@ export default function Home() {
 
       <Link
 
-        to="/products"
+        to="/products-services"
 
         className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
 
@@ -741,7 +741,7 @@ export default function Home() {
 
       <Link
 
-        to="/products"
+        to="/products-services"
 
         className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
 
@@ -1005,7 +1005,7 @@ export default function Home() {
 
           <a
 
-            href="/products#inverters"
+            href="/products-services#solar"
 
             className="text-green hover:text-red transition-colors duration-200"
 
@@ -1019,7 +1019,7 @@ export default function Home() {
 
           <a
 
-            href="/products#security"
+            href="/products-services#security"
 
             className="text-green hover:text-red transition-colors duration-200"
 
@@ -1033,7 +1033,7 @@ export default function Home() {
 
           <a
 
-            href="/products#automation"
+            href="/products-services#automation"
 
             className="text-green hover:text-red transition-colors duration-200"
 
@@ -1047,7 +1047,7 @@ export default function Home() {
 
           <a
 
-            href="/products#automation"
+            href="/products-services#automation"
 
             className="text-green hover:text-red transition-colors duration-200"
 
@@ -1772,7 +1772,7 @@ export default function Home() {
 {/* =========================
     OUR PROJECTS SECTION
 ========================= */}
-<section className="bg-white py-20 sm:py-24">
+<section id="projects" className="bg-white py-20 sm:py-24">
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
     <Reveal>
       <div className="mx-auto max-w-3xl text-center">
@@ -1809,22 +1809,22 @@ export default function Home() {
 
     <Reveal stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {visibleProjects.map((project) => (
-        <article key={project.id} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <article key={project.id} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"> 
           {/* IMAGE PLACEHOLDER: replace this block with the real project photo when available. */}
-          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A192F] via-[#163B4A] to-[#0F382C] p-6 text-center">
-            <div aria-hidden="true" className="absolute -right-8 -top-8 h-36 w-36 rounded-full border border-white/10 transition-transform duration-500 group-hover:scale-125" />
-            <div aria-hidden="true" className="absolute -bottom-12 -left-8 h-40 w-40 rounded-full border border-white/10 transition-transform duration-500 group-hover:scale-110" />
-            <div className="relative">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-auto mb-3 h-10 w-10 text-[#D4AF37]" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="m21 15-5-5L5 21" />
-              </svg>
-              <p className="text-sm font-medium text-white"></p>
-              <p className="mt-1 text-xs text-white/65"></p>
-            </div>
-            <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">{project.category}</span>
-          </div>
+        
+{/* Project image */}
+<div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+  <img
+    src={project.image}
+    alt={project.title}
+    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    loading="lazy"
+  />
+
+  <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+    {project.category}
+  </span>
+</div>
           <div className="p-6">
             <h3 className="text-xl font-bold text-[#0A192F]">{project.title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">{project.description}</p>
@@ -2278,3 +2278,4 @@ export default function Home() {
   );
 
 }
+
