@@ -1109,7 +1109,7 @@ export default function Home() {
 
         <a
 
-          href="/solar-load-calculator/"
+          href="/load-calculator/"
 
           className="inline-flex items-center text-sm font-medium text-green hover:text-red transition-colors duration-200"
 

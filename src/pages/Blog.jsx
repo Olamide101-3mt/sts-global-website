@@ -1,42 +1,95 @@
+import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
 
 const POSTS = [
   {
-    tag: "Solar",
-    color: "bg-green text-white",
-    title: "Article title will appear here",
-    excerpt:
-      "A short description of the article will appear here once STS Global provides the content.",
-    date: "[DATE] · [READ TIME]",
-  },
-  {
+    id: "electric-fence",
+    image: "images/electric.jpg",
     tag: "Security",
     color: "bg-red text-white",
-    title: "Article title will appear here",
+    title: "Electric Fence Security Solutions for Enhanced Property Security",
     excerpt:
-      "A short description of the article will appear here once STS Global provides the content.",
-    date: "[DATE] · [READ TIME]",
+      "Protect Your Property Styrenthen Your Security.",
+    date: "Security Solutions",
+    readTime: "Guide",
   },
   {
+    id: "solar-energy",
+    image: "images/solar1.jpg",
+    tag: "Solar",
+    color: "bg-green text-white",
+    title: "Solar Renewable Energy Solutions for Homes and Businesses",
+    excerpt:
+      "Reliable Energy. Intelligent Technology. Sustainable Future.",
+    date: "Powering a better future with solar energy",
+    readTime: "Guide",
+  },
+  {
+    id: "automated-gates",
+    image:"images/gate.jpg",
     tag: "Automation",
     color: "bg-gold text-[#3a2c00]",
-    title: "Article title will appear here",
+    title: "Automated Gates, Sliding Gates and Smart Home Automation",
     excerpt:
-      "A short description of the article will appear here once STS Global provides the content.",
-    date: "[DATE] · [READ TIME]",
+      "Intelligent Access. Enhanced Security. Everyday Convenience",
+    date: "Transform Your Property With Smart Automation",
+    readTime: "Guide",
   },
+  {
+    id: "cctv-ip-cameras",
+    image: "images/cctv.png",
+    tag: "Security",
+    color: "bg-red text-white",
+    title: "CCTV and IP Camera Security Systems Explained",
+    excerpt:
+      "Smarter Surveillance. Stronger Security. Greater Peace of Mind",
+    date: "Protect What Matters Most With Advanced CCTV Technology",
+    readTime: "Guide",
+  },
+  {
+    id: "pabx-intercom",
+    image: "images/pabx.jpg",
+    tag: "Communication",
+    color: "bg-navy text-white",
+    title: "PABX Intercom Phone Systems for Homes, Offices and Businesses",
+    excerpt:
+      "Better Communication. Smarter Connectivity. Professional Solutions",
+    date: "Improve Communication with a Pabx Intercom Phone System",
+    readTime: "Guide",
+  },
+  {
+    id: "solar-water-pumping",
+    image: "images/solar.png",
+    tag: "Solar",
+    color: "bg-green text-white",
+    title: "Solar Water Pumping Solutions for Rural Communities",
+    excerpt:
+      "Sustainable Water Supply. Clean Enery. Stronger Communities.",
+    date: "Bringing Reliable Water Access To Communities Through Solar Energy",
+    readTime: "Guide",
+  },
+  {
+    id: "elevator-lift",
+    image: "images/elevator.jpg",
+    tag: "Other Solutions",
+    color: "bg-[#E8EAF0] text-navy",
+    title: "Elevator and Lift Solutions for Modern Buildings",
+    excerpt:
+      "Modern Elevator Solutions For Residential and Commercial Buildings",
+    date: "Building Solutions",
+    readTime: "Guide",
+  },
+ 
 ];
 
-function PostPlaceholder({ label = "Post image" }) {
+function PostPlaceholder({ label = "Article image" }) {
   return (
-    <div className="relative bg-[#F3F1E9] text-grey-mid aspect-[16/10] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent" />
-
-      <div className="relative text-center">
+    <div className="relative aspect-[16/10] bg-[#F3F1E9] text-grey-mid flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/30 to-transparent" />
+      <div className="relative text-center px-4">
         <div className="w-12 h-12 mx-auto mb-3 border border-grey-line flex items-center justify-center text-green text-lg">
           +
         </div>
-
         <span className="text-sm">{label}</span>
       </div>
     </div>
@@ -44,99 +97,110 @@ function PostPlaceholder({ label = "Post image" }) {
 }
 
 export default function Blog() {
+  const featuredPost = POSTS[1];
+
   return (
     <main className="bg-cream min-h-screen">
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        {/* =========================================================
-            PAGE INTRO
-        ========================================================== */}
+        {/* PAGE INTRO */}
         <Reveal>
           <div className="flex items-center gap-3 mb-4">
             <span className="block w-8 h-[2px] bg-red" />
-
             <div className="text-green text-xs font-semibold tracking-widest uppercase">
-              From the team
+              From the STS Global team
             </div>
           </div>
 
           <h1 className="text-[38px] md:text-5xl leading-[1.08] max-w-3xl mb-5">
-            Guides and updates on solar, security &amp; automation.
+            Insights on solar, security, communication and automation.
           </h1>
 
           <p className="text-grey-mid max-w-[60ch] leading-7 mb-12">
-            Practical information to help homeowners and business owners
-            understand their power, security and automation options.
+            Explore our guides to energy solutions, property security,
+            automated systems and building technologies for homes,
+            businesses and communities.
           </p>
         </Reveal>
 
-        {/* =========================================================
-            FEATURED ARTICLE
-        ========================================================== */}
+        {/* FEATURED ARTICLE */}
         <Reveal>
           <article className="group grid md:grid-cols-[1.1fr_0.9fr] border border-grey-line bg-white mb-14 overflow-hidden transition-all duration-300 hover:shadow-xl">
             <div className="overflow-hidden">
               <div className="h-full transition-transform duration-500 group-hover:scale-[1.02]">
-                <PostPlaceholder label="Featured post image" />
+                <img
+  src={featuredPost.image}
+  alt={featuredPost.title}
+  className="w-full aspect-[16/10] object-cover"
+/>
               </div>
             </div>
 
             <div className="p-8 md:p-10 flex flex-col justify-center items-start">
               <span className="inline-block bg-green text-white text-[11px] font-bold tracking-wide uppercase px-3 py-1.5 mb-5">
-                Featured guide
+                Featured topic
               </span>
 
               <h2 className="text-2xl md:text-3xl font-semibold leading-tight mb-4">
-                Featured article title will appear here
+                {featuredPost.title}
               </h2>
 
               <p className="text-grey-mid text-sm leading-7 mb-5">
-                The featured article introduction will appear here once STS
-                Global provides the approved article content.
+                {featuredPost.excerpt}
               </p>
 
               <div className="flex items-center gap-3 text-xs text-grey-mid">
-                <span>[DATE]</span>
+                <span>{featuredPost.date}</span>
                 <span className="w-1 h-1 rounded-full bg-red" />
-                <span>[READ TIME]</span>
+                <span>{featuredPost.readTime}</span>
               </div>
 
-              <button
-                type="button"
-                className="mt-7 text-green text-sm font-medium inline-flex items-center gap-2 transition-all duration-300 group-hover:gap-3"
-              >
-                Read article <span>→</span>
-              </button>
+      
+<Link
+  to={`/blog/${featuredPost.id}`}
+  aria-label={`Read ${featuredPost.title}`}
+  className="text-green text-sm font-semibold transition-transform duration-300 group-hover:translate-x-1"
+>
+  Read full article <span>→</span>
+              </Link>
             </div>
           </article>
         </Reveal>
 
-        {/* =========================================================
-            ARTICLE GRID
-        ========================================================== */}
+        {/* ARTICLE GRID */}
         <section>
           <Reveal>
-            <div className="flex items-end justify-between gap-6 mb-7">
-              <div>
-                <div className="text-green text-xs font-semibold tracking-widest uppercase mb-2">
-                  Latest articles
-                </div>
-
-                <h2 className="text-2xl md:text-3xl font-semibold">
-                  Learn more from STS Global.
-                </h2>
+            <div className="mb-7">
+              <div className="text-green text-xs font-semibold tracking-widest uppercase mb-2">
+                Explore our solutions
               </div>
+
+              <h2 className="text-2xl md:text-3xl font-semibold">
+                Guides and insights from STS Global.
+              </h2>
+
+              <p className="text-grey-mid text-sm leading-7 mt-3 max-w-2xl">
+                Browse our areas of expertise and contact our team for
+                guidance on a solution suited to your requirements.
+              </p>
             </div>
           </Reveal>
 
-          <Reveal stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Reveal
+            stagger
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {POSTS.map((post) => (
               <article
-                key={post.tag}
+                key={post.id}
                 className="group border border-grey-line bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="overflow-hidden">
                   <div className="transition-transform duration-500 group-hover:scale-[1.02]">
-                    <PostPlaceholder />
+                   <img
+  src={post.image}
+  alt={post.title}
+  className="w-full aspect-[16/10] object-cover"
+/>
                   </div>
                 </div>
 
@@ -151,18 +215,23 @@ export default function Blog() {
                     {post.title}
                   </h3>
 
-                  <p className="text-[13.5px] leading-6 text-grey-mid mb-4">
+                  <p className="text-[13.5px] leading-6 text-grey-mid mb-5">
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-xs text-grey-mid">
+                  <div className="flex items-center justify-between gap-3 border-t border-grey-line pt-4">
+                    <span className="text-xs text-grey-mid">
                       {post.date}
-                    </div>
-
-                    <span className="text-green text-sm transition-transform duration-300 group-hover:translate-x-1">
-                      →
                     </span>
+
+                  
+<Link
+  to={`/blog/${post.id}`}
+  aria-label={`Read ${post.title}`}
+  className="text-green text-sm font-semibold transition-transform duration-300 group-hover:translate-x-1"
+>
+  Read article →
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -170,9 +239,7 @@ export default function Blog() {
           </Reveal>
         </section>
 
-        {/* =========================================================
-            BOTTOM CTA
-        ========================================================== */}
+        {/* BOTTOM CTA */}
         <Reveal>
           <section className="relative overflow-hidden bg-navy text-white mt-16 md:mt-20 p-8 md:p-12">
             <div className="absolute top-0 right-0 w-28 h-28 bg-red opacity-90 translate-x-14 -translate-y-14 rotate-45" />
@@ -182,25 +249,25 @@ export default function Blog() {
                 <span className="block w-8 h-[2px] bg-red" />
 
                 <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-                  Need a solution?
+                  Let's find the right solution
                 </span>
               </div>
 
               <h2 className="text-2xl md:text-3xl font-semibold leading-tight mb-4 text-black">
-                Have questions about solar, security or automation?
+                Need help choosing a solution for your property?
               </h2>
 
               <p className="text-black text-sm leading-7 mb-7">
-                If you&apos;re not sure what solution is right for your
-                property, speak with STS Global about your requirements.
+                Talk to STS Global about your power, security,
+                communication or automation requirements.
               </p>
 
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center bg-green hover:bg-green-deep text-white px-6 py-3.5 text-sm transition-all duration-300 hover:-translate-y-0.5"
               >
                 Talk to STS Global →
-              </a>
+              </Link>
             </div>
           </section>
         </Reveal>

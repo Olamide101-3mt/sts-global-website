@@ -160,9 +160,9 @@ export default function About() {
           access control
         </a>
         , smart home systems,{" "}
-        <p >
+        
           PABX intercoms
-        </p>
+    
         and elevators. Whatever you buy, one team answers for it.
       </p>
     </article>
