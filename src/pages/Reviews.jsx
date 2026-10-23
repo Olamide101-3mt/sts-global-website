@@ -6,12 +6,13 @@ import { supabase } from "../lib/supabase";
 /*
  * DISPLAY RULES
  * - Every review that visitors submit is saved in the database.
- * - The LIST shows only reviews rated MIN_RATING stars or higher, and only
- *   the top MAX_REVIEWS: highest rating first, then newest.
- * - The RATING SUMMARY (average, count, star bars) is calculated from ALL
- *   reviews received, including the ones not shown in the list, so the
- *   number is a true reflection of what clients said. It comes from the
- *   database function review_stats(), which only returns totals.
+ * - The Supabase portion of the LIST shows only reviews rated MIN_RATING
+ *   stars or higher, and only the top MAX_REVIEWS: highest rating first,
+ *   then newest. Four client-provided hardcoded reviews are always displayed
+ *   separately alongside those Supabase reviews.
+ * - The RATING SUMMARY combines the totals from review_stats() with the four
+ *   hardcoded five-star reviews. Hardcoded reviews are never inserted into
+ *   Supabase, and the existing database policies and function remain unchanged.
  *
  * The "4 stars and above" rule for the list is enforced in the database
  * itself (see the select policy in the SQL), so lower-rated reviews can't
@@ -22,18 +23,35 @@ const MAX_REVIEWS = 6;
 const MIN_RATING = 4;
 
 /*
- * Placeholder testimonials so the page isn't empty while the design is
- * being reviewed. These are SAMPLES, not real clients.
- * Set this to false before the site goes live so only real, submitted
- * reviews are shown.
+ * Genuine customer reviews supplied by the client. They are hardcoded and
+ * displayed locally; they are never inserted into Supabase. Their four
+ * five-star ratings are added to the frontend rating summary.
  */
-const SHOW_SAMPLE_REVIEWS = true;
-
-const SAMPLE_REVIEWS = [
-  { id: "sample-1", stars: 5, text: "From quote to installation was under a week. The solar package they recommended matched exactly what my house needed.", who: "Adebayo O. — Ikorodu" },
-  { id: "sample-2", stars: 5, text: "Very responsive on WhatsApp even after installation, for the few questions I had about the inverter.", who: "Chioma A. — Lagos" },
-  { id: "sample-3", stars: 4, text: "Good CCTV setup, took a little longer than expected but the result works well.", who: "Tunde F. — Ikorodu" },
-  { id: "sample-4", stars: 5, text: "Sent someone to train two of my staff on basic solar maintenance. Very practical, no wasted time.", who: "Grace N. — Lagos" },
+const HARDCODED_REVIEWS = [
+  {
+    id: "client-review-olumide-osisanwo",
+    stars: 5,
+    text: "They are the best solution to  light, their installation was supper , they work very perfectly. Keep doing your best more customers are on their way.",
+    who: "Olumide Osisanwo — Jan 2026",
+  },
+  {
+    id: "client-review-adebayo-yaya",
+    stars: 5,
+    text: "The name Service Technology has become an household name in the world of solar energy installation in Nigeria.l had introduced several clients to the company and the feedbacks i got after the patronage were all positive.Intending clients should patronise the company because it has integrity and the services it delivers are second to none.l have been a client to the company in the last fifteen years.",
+    who: "Adebayo Yaya — Feb 2026",
+  },
+  {
+    id: "client-review-seun-akindipe",
+    stars: 5,
+    text: "Your services and products are top notch, I have been enjoying the inverter system since installation.",
+    who: "Seun Akindipe — Oct 2025",
+  },
+  {
+    id: "client-review-jibola-oseni",
+    stars: 5,
+    text: "Thank you for doing a great job. Quality materials, quick response to complaints and dedicated to their job. Still enjoying the solar you did. Thank you",
+    who: "Jibola Oseni — Dec 2025",
+  },
 ];
 
 // Light spam protection: one review per browser every 2 minutes.
@@ -152,24 +170,30 @@ export default function Reviews() {
     };
   }, []);
 
-  // Real reviews first, topped up with samples (if switched on), capped at 6
+  // Always show the four client-provided reviews alongside up to six
+  // eligible Supabase reviews. They remain separate from database submissions.
   const visibleReviews = useMemo(
-    () =>
-      [...liveReviews.map(toDisplay), ...(SHOW_SAMPLE_REVIEWS ? SAMPLE_REVIEWS : [])].slice(
-        0,
-        MAX_REVIEWS
-      ),
+    () => [...HARDCODED_REVIEWS, ...liveReviews.map(toDisplay)],
     [liveReviews]
   );
 
-  // Values for the rating summary
-  const total = stats?.total ?? 0;
-  const average = total ? Number(stats.average) : 0;
+  // Combine Supabase totals with the four hardcoded five-star reviews.
+  // This changes only the frontend summary; no hardcoded review is written to Supabase.
+  const hardcodedCount = HARDCODED_REVIEWS.length;
+  const databaseTotal = Number(stats?.total ?? 0);
+  const total = databaseTotal + hardcodedCount;
+  const databaseAverage = databaseTotal ? Number(stats?.average ?? 0) : 0;
+  const combinedStarSum = databaseAverage * databaseTotal + hardcodedCount * 5;
+  const average = total ? combinedStarSum / total : 0;
   const filledStars = Math.round(average);
-  const breakdown = [5, 4, 3, 2, 1].map((n) => ({
-    label: `${n}★`,
-    pct: total ? Math.round(((stats?.[`c${n}`] ?? 0) / total) * 100) : 0,
-  }));
+  const breakdown = [5, 4, 3, 2, 1].map((n) => {
+    const databaseCount = Number(stats?.[`c${n}`] ?? 0);
+    const combinedCount = databaseCount + (n === 5 ? hardcodedCount : 0);
+    return {
+      label: `${n}★`,
+      pct: total ? Math.round((combinedCount / total) * 100) : 0,
+    };
+  });
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -249,7 +273,7 @@ export default function Reviews() {
               </div>
               <div className="text-xs text-grey-mid mt-1">
                 {statsError
-                  ? "ratings unavailable"
+                  ? `including ${hardcodedCount} client reviews; database ratings unavailable`
                   : total
                   ? `based on all ${total} review${total === 1 ? "" : "s"}`
                   : "no reviews yet"}
