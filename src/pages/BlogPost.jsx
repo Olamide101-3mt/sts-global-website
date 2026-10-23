@@ -3,6 +3,7 @@ import Reveal from "../components/Reveal";
 
 const ARTICLES = {
   "electric-fence": {
+    image: "/images/electric.jpg",
     category: "Security",
     title: "Electric Fence Solutions for Enhanced Property Security",
     intro:
@@ -32,10 +33,11 @@ const ARTICLES = {
   },
 
   "solar-energy": {
+    image: "/images/solar1.jpg",
     category: "Solar",
-    title: "Solar Renewable Energy Solutions for Homes and Businesses",
+    title: "Solar Renewable Energy Solutions for Homes, Schools, Churches, and Businesses",
     intro:
-      "Solar energy offers homes and businesses another way to generate electricity and manage their power needs. The right system depends on energy consumption, available sunlight and the appliances that must remain powered.",
+      "Solar energy offers homes, schools, churches, and businesses another way to generate electricity and manage their power needs. The right system depends on energy consumption, available sunlight and the appliances that must remain powered.",
     sections: [
      {
         heading: "How does a solar power system work?",
@@ -64,6 +66,7 @@ const ARTICLES = {
   },
 
   "automated-gates": {
+    image: "/images/gate.jpg",
     category: "Automation",
     title: "Automated Gates, Sliding Gates and Smart Home Automation",
     intro:
@@ -93,6 +96,7 @@ const ARTICLES = {
   },
 
   "cctv-ip-cameras": {
+    image: "/images/camera.jpg",
     category: "Security",
     title: "CCTV and IP Camera Security Systems Explained",
     intro:
@@ -121,6 +125,7 @@ const ARTICLES = {
   },
 
   "pabx-intercom": {
+    image: "/images/Pbx.png",
     category: "Communication",
     title: "PABX Intercom Phone Systems for Homes, Offices and Businesses",
     intro:
@@ -149,6 +154,7 @@ const ARTICLES = {
   },
 
   "solar-water-pumping": {
+    image: "/images/water.jpg",
     category: "Solar",
     title: "Solar Water Pumping Solutions for Rural Communities",
     intro:
@@ -178,6 +184,7 @@ const ARTICLES = {
   },
 
   "elevator-lift": {
+    image: "/images/lift.jpg",
     category: "Building Solutions",
     title: "Elevator and Lift Solutions for Modern Buildings",
     intro:
@@ -206,6 +213,7 @@ const ARTICLES = {
   },
 
   "smart-home": {
+    image: null,
     category: "Automation",
     title: "Smart Home Automation: Making Everyday Living More Convenient",
     intro:
@@ -279,6 +287,15 @@ export default function BlogPost() {
           <h1 className="text-3xl md:text-5xl font-semibold leading-tight text-navy mb-6">
             {post.title}
           </h1>
+          {post.image && (
+  <div className="mb-8 overflow-hidden border border-grey-line">
+    <img
+      src={post.image}
+      alt={post.title}
+      className="w-full aspect-[16/9] object-cover"
+    />
+  </div>
+)}
 
           <p className="text-lg leading-8 text-grey-mid mb-10">
             {post.intro}

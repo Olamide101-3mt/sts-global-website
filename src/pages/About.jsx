@@ -71,13 +71,11 @@ export default function About() {
             </div>
 
             <div className="group bg-[#F3F1E9] border border-grey-line aspect-[4/3] flex items-center justify-center text-grey-mid text-sm overflow-hidden">
-              <div className="text-center transition-transform duration-500 group-hover:scale-105">
-                <div className="w-14 h-14 mx-auto mb-3 border border-grey-line flex items-center justify-center text-green text-xl">
-                  +
-                </div>
-
-                <span>Team / office photo</span>
-              </div>
+              <img
+  src="/images/office1.jpg"
+  alt="STS Global team at the office"
+  className="w-full aspect-[4/3] object-cover border border-grey-line"
+/>
             </div>
           </section>
         </Reveal>

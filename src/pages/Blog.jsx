@@ -4,7 +4,7 @@ import Reveal from "../components/Reveal";
 const POSTS = [
   {
     id: "electric-fence",
-    image: "images/electric.jpg",
+    image: "/images/electric.jpg",
     tag: "Security",
     color: "bg-red text-white",
     title: "Electric Fence Security Solutions for Enhanced Property Security",
@@ -15,7 +15,7 @@ const POSTS = [
   },
   {
     id: "solar-energy",
-    image: "images/solar1.jpg",
+    image: "/images/solar1.jpg",
     tag: "Solar",
     color: "bg-green text-white",
     title: "Solar Renewable Energy Solutions for Homes and Businesses",
@@ -26,7 +26,7 @@ const POSTS = [
   },
   {
     id: "automated-gates",
-    image:"images/gate.jpg",
+    image: "/images/gate.jpg",
     tag: "Automation",
     color: "bg-gold text-[#3a2c00]",
     title: "Automated Gates, Sliding Gates and Smart Home Automation",
@@ -37,7 +37,7 @@ const POSTS = [
   },
   {
     id: "cctv-ip-cameras",
-    image: "images/cctv.png",
+    image: "/images/camera.jpg",
     tag: "Security",
     color: "bg-red text-white",
     title: "CCTV and IP Camera Security Systems Explained",
@@ -48,7 +48,7 @@ const POSTS = [
   },
   {
     id: "pabx-intercom",
-    image: "images/pabx.jpg",
+    image: "/images/Pbx.png",
     tag: "Communication",
     color: "bg-navy text-white",
     title: "PABX Intercom Phone Systems for Homes, Offices and Businesses",
@@ -59,7 +59,7 @@ const POSTS = [
   },
   {
     id: "solar-water-pumping",
-    image: "images/solar.png",
+    image: "/images/water.jpg",
     tag: "Solar",
     color: "bg-green text-white",
     title: "Solar Water Pumping Solutions for Rural Communities",
@@ -70,7 +70,7 @@ const POSTS = [
   },
   {
     id: "elevator-lift",
-    image: "images/elevator.jpg",
+    image: "images/lift.jpg",
     tag: "Other Solutions",
     color: "bg-[#E8EAF0] text-navy",
     title: "Elevator and Lift Solutions for Modern Buildings",
@@ -195,13 +195,17 @@ export default function Blog() {
                 className="group border border-grey-line bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="overflow-hidden">
-                  <div className="transition-transform duration-500 group-hover:scale-[1.02]">
-                   <img
-  src={post.image}
-  alt={post.title}
-  className="w-full aspect-[16/10] object-cover"
-/>
-                  </div>
+                  {post.image ? (
+                    <div className="transition-transform duration-500 group-hover:scale-[1.02]">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full aspect-[16/10] object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <PostPlaceholder label="Image coming soon" />
+                  )}
                 </div>
 
                 <div className="p-5">
