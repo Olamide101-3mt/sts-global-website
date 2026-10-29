@@ -10,8 +10,8 @@ export default function SEO({
 }) {
   useEffect(() => {
     const fullTitle = title
-      ? `${title} | STS Global`
-      : "STS Global | Solar, Security, CCTV and Automation Solutions";
+      ? `${title} | Service Technology Solutions Global`
+      : "Service Technology Solutions Global | Solar, Security, CCTV and Automation Solutions";
 
     const canonicalUrl = `${SITE_URL}${path}`;
 

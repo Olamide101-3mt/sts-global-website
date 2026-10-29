@@ -23,10 +23,11 @@ export default function Home() {
   return (
     <>
      <SEO
-  title="Solar, CCTV, Automation, Electric Fence and Security Solutions in Ikorodu, Lagos, Nigeria"
-  description="Explore solar power systems, CCTV, electric fencing, access control and automation solutions from STS Global in Ikorodu, Lagos."
-  path="/"
-/>
+      title="Solar, CCTV, Automation, Electric Fence and Security
+      Solutions in Ikorodu, Lagos, Nigeria"
+      description="Explore solar power systems, CCTV, electric fencing, access control and automation solutions from STS Global in Ikorodu, Lagos."
+      path="/"
+    />
 
 {/* ==================== HERO ==================== */}
 
