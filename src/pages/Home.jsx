@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import { whatsappLink } from "../data/siteConfig";
+import SEO from "../components/SEO";
 
 const PROJECT_CATEGORIES = ["All", "Solar", "Electric Fence", "CCTV", "Batteries", "Inverters", "Automation"];
 const PROJECTS = [
@@ -21,6 +22,11 @@ export default function Home() {
 
   return (
     <>
+     <SEO
+  title="Solar, CCTV, Automation, Electric Fence and Security Solutions in Ikorodu, Lagos, Nigeria"
+  description="Explore solar power systems, CCTV, electric fencing, access control and automation solutions from STS Global in Ikorodu, Lagos."
+  path="/"
+/>
 
 {/* ==================== HERO ==================== */}
 

@@ -1,6 +1,7 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO"
 
 const DEFAULT_APPLIANCES = [
   {
@@ -153,15 +154,6 @@ export default function LoadCalculator() {
 
     const totalLoadKw = totalLoadWatts / 1000;
     const dailyEnergyKwh = dailyEnergyWh / 1000;
-
-    /*
-      We add a modest design margin to the raw connected load
-      before suggesting an inverter class.
-
-      This is still only an estimate. Final inverter sizing should
-      consider surge loads, power factor, battery requirements,
-      operating patterns and the actual equipment specifications.
-    */
     const designLoadKw = totalLoadKw * 1.25;
 
     const suggestedInverter = getSuggestedInverter(designLoadKw);
@@ -187,12 +179,10 @@ export default function LoadCalculator() {
       )
     );
   };
-
   const handleApplianceChange = (id, applianceName) => {
     const selected = APPLIANCE_OPTIONS.find(
       (option) => option.name === applianceName
     );
-
     setAppliances((current) =>
       current.map((appliance) =>
         appliance.id === id
@@ -224,6 +214,10 @@ export default function LoadCalculator() {
 
   return (
     <section className="bg-[#F7F4EC] py-20 sm:py-24">
+      <SEO title="Solar Load Calculator"
+        description="Estimate your appliances' power requirements with the Service Technology Solutions Global load calculator to help plan a suitable solar inverter and battery system."
+        path="/load-calculator"
+      />  
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Header */}

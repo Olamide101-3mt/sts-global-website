@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Reveal from "../components/Reveal";
 import useReveal from "../hooks/useReveal";
 import { supabase } from "../lib/supabase";
+import SEO from "../components/SEO"
 
 /*
  * DISPLAY RULES
@@ -105,6 +106,7 @@ function Stars({ count }) {
       {"★".repeat(count)}
       <span className="text-grey-line">{"★".repeat(5 - count)}</span>
     </div>
+
   );
 }
 
@@ -253,6 +255,10 @@ export default function Reviews() {
 
   return (
     <section className="py-16 md:py-20">
+      <SEO title="Customer Reviews and Feedback"
+        description="Read customer feedback about Service Technology Solutions Global's solar energy, security, PABX communication and automation solutions."
+        path="/reviews"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
           <div className="text-green text-xs font-semibold tracking-widest uppercase mb-3">Client reviews</div>

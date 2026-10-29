@@ -21,7 +21,7 @@ export function whatsappLink(message = WHATSAPP_DEFAULT_MESSAGE) {
 export const BUSINESS = {
   name: "STS Global",
   fullName: "Service Technology Solutions Global",
-  address: "Katola Estate Rd, Ikorodu, 104101, Lagos, Nigeria",
+  address: "11 Adegbe street 3rd Avenue katola ikorodu, north, Ikorodu 104101, Lagos",
   email: "info@stsolutionsglobal.com",
   phone: "+234 802 758 4145",
   hours: "Mon – Sat, 9am – 6pm",

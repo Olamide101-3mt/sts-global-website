@@ -1,5 +1,6 @@
 import Reveal from "../components/Reveal";
 import { whatsappLink } from "../data/siteConfig";
+import SEO from "../components/SEO";
 
 const VALUES = [
   {
@@ -38,6 +39,10 @@ const TIMELINE = [
 export default function About() {
   return (
     <main className="bg-cream min-h-screen overflow-hidden">
+      <SEO  title = "About Service Technology Solutions Global, Ikorodu,Lagos."
+    description = "Learn about STS Global and our solar energy, security, communication and automation solutions for homes and businesses in Ikorodu,Lagos, Nigeria"
+    path ="/about"
+      />
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
         {/* =========================================================
             INTRODUCTION
@@ -71,18 +76,11 @@ export default function About() {
             </div>
 
             <div className="group bg-[#F3F1E9] border border-grey-line aspect-[4/3] flex items-center justify-center text-grey-mid text-sm overflow-hidden">
-              <img
-  src="/images/office1.jpg"
-  alt="STS Global team at the office"
-  className="w-full aspect-[4/3] object-cover border border-grey-line"
-/>
+              <img src="/images/office1.jpg" alt="STS Global team at the office" className="w-full aspect-[4/3] object-cover border border-grey-line"
+              />
             </div>
           </section>
         </Reveal>
-
-        {/* =========================================================
-            VALUES
-        ========================================================== */}
 
 {/* =========================================================
     WHY STS GLOBAL

@@ -1,27 +1,69 @@
 import { useState } from "react";
 import Reveal from "../components/Reveal";
 import { BUSINESS, whatsappLink } from "../data/siteConfig";
+import SEO from "../components/SEO"
+
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
+const EMPTY_FORM = { name: "", phone: "", message: "" };
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [honeypot, setHoneypot] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // NOTE: this form currently just confirms on-screen. To actually
-    // deliver messages, point this at a form backend — e.g. Formspree,
-    // Web3Forms, or a small PHP mail script on the existing cPanel
-    // hosting. See README for options. The WhatsApp button below works
-    // immediately with no backend needed.
-    setSent(true);
+    if (status === "sending") return;
+
+    // Honeypot: real visitors never see this hidden field, many bots fill it.
+    if (honeypot) {
+      setStatus("sent");
+      return;
+    }
+
+    if (!FORMSPREE_ENDPOINT) {
+      console.error("VITE_FORMSPREE_ENDPOINT is missing — add it to .env and restart the dev server.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...form,
+          _subject: "New enquiry from the STS Global website",
+        }),
+      });
+
+      if (!res.ok) {
+        const info = await res.json().catch(() => ({}));
+        throw new Error(info?.errors?.map((x) => x.message).join(", ") || `Formspree returned ${res.status}`);
+      }
+
+      setForm(EMPTY_FORM);
+      setStatus("sent");
+    } catch (err) {
+      console.error("Could not send message:", err);
+      setStatus("error");
+    }
   }
 
   return (
+   
     <section className="py-16 md:py-20">
+       <SEO title= "Contact Service Technology Solutions Global in Ikorodu, Lagos, Nigeria"
+      description= "Contact STS Global in Ikorodu, Lagos, for enquiries about solar installations, CCTV, electric fencing, access control and automation services."
+      path ="/contact"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
           <div className="text-green text-xs font-semibold tracking-widest uppercase mb-3">Get in touch</div>
@@ -32,27 +74,42 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 border border-grey-line">
             <div className="p-8 md:p-10 bg-white">
               <h3 className="text-[19px] font-semibold mb-5">Send a message</h3>
-              {sent ? (
+              {status === "sent" ? (
                 <p className="text-grey-mid text-sm">
-                  Thanks — your message has been noted. We'll get back to you shortly, or feel free to
-                  reach us faster on WhatsApp.
+                  Thanks — we've received your message and will get back to you shortly. For a faster
+                  reply, feel free to reach us on WhatsApp.
                 </p>
               ) : (
                 <form onSubmit={handleSubmit}>
+                  {/* Honeypot — hidden from real visitors */}
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] w-0 h-0 opacity-0"
+                  />
+
                   <input
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Full name"
                     required
+                    maxLength={80}
                     className="w-full border border-grey-line px-3.5 py-3 text-sm mb-4"
                   />
                   <input
                     name="phone"
+                    type="tel"
                     value={form.phone}
                     onChange={handleChange}
                     placeholder="Phone number"
                     required
+                    maxLength={30}
                     className="w-full border border-grey-line px-3.5 py-3 text-sm mb-4"
                   />
                   <textarea
@@ -61,14 +118,32 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="What do you need help with?"
                     required
+                    maxLength={2000}
                     rows={4}
                     className="w-full border border-grey-line px-3.5 py-3 text-sm mb-4 focus:outline-none focus:border-green"
                   />
+
+                  {status === "error" && (
+                    <p role="alert" className="text-red text-sm mb-4">
+                      Sorry, your message didn't go through. Please try again, or{" "}
+                      <a
+                        href={whatsappLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline font-medium"
+                      >
+                        message us on WhatsApp
+                      </a>
+                      .
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-green hover:bg-green-deep transition-colors text-white py-3.5 text-sm font-medium"
+                    disabled={status === "sending"}
+                    className="w-full bg-green hover:bg-green-deep disabled:opacity-60 transition-colors text-white py-3.5 text-sm font-medium"
                   >
-                    Send message →
+                    {status === "sending" ? "Sending…" : "Send message →"}
                   </button>
                 </form>
               )}
@@ -93,33 +168,27 @@ export default function Contact() {
                 </span>
               </a>
 
-              
+              {/* Clickable Google Maps location */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Service+Technology+Solutions+Global%2C+Katola+Estate+Rd%2C+Ikorodu%2C+104101%2C+Lagos%2C+Nigeria"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Service Technology Solutions Global on Google Maps"
+                className="block aspect-video mt-6 border border-white/15 overflow-hidden group relative"
+              >
+                <iframe
+                  title="Service Technology Solutions Global location"
+                  className="w-full h-full grayscale contrast-125 pointer-events-none"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=Service+Technology+Solutions+Global%2C+Katola+Estate+Rd%2C+Ikorodu%2C+104101%2C+Lagos%2C+Nigeria&output=embed"
+                />
 
-
-{/* Clickable Google Maps location */}
-<a
-  href="https://www.google.com/maps/search/?api=1&query=Service+Technology+Solutions+Global%2C+Katola+Estate+Rd%2C+Ikorodu%2C+104101%2C+Lagos%2C+Nigeria"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Open Service Technology Solutions Global on Google Maps"
-  className="block aspect-video mt-6 border border-white/15 overflow-hidden group relative"
->
-  <iframe
-    title="Service Technology Solutions Global location"
-    className="w-full h-full grayscale contrast-125 pointer-events-none"
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-    src="https://www.google.com/maps?q=Service+Technology+Solutions+Global%2C+Katola+Estate+Rd%2C+Ikorodu%2C+104101%2C+Lagos%2C+Nigeria&output=embed"
-  />
-
-  {/* Hover message */}
-  <span className="absolute bottom-0 left-0 right-0 bg-ink/85 text-white text-xs sm:text-sm px-4 py-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-    Click to open our location in Google Maps →
-  </span>
-</a>
-
-
-
+                {/* Hover message */}
+                <span className="absolute bottom-0 left-0 right-0 bg-ink/85 text-white text-xs sm:text-sm px-4 py-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                  Click to open our location in Google Maps →
+                </span>
+              </a>
             </div>
           </div>
         </Reveal>

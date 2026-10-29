@@ -1,5 +1,6 @@
 import Reveal from "../components/Reveal";
 import { whatsappLink } from "../data/siteConfig";
+import SEO from "../components/SEO"
 
 /*
  * =========================================================
@@ -162,6 +163,12 @@ const AUTOMATION_SOLUTIONS = [
 function SolutionCard({ title, description, icon }) {
   return (
     <div className="group bg-white border border-grey-line p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <SEO title="Solar, CCTV, Electric Fence, Elevation and lift
+        Solutions, PABX INTERCOMM and Security Systems"
+        description="Explore solar panels, inverters, batteries, CCTV, electric fencing, access control, PABX INTERCOMM and automation services from STS Global in Ikorodu, Lagos."
+        path="/products-services"
+      />
+
       <div className="flex items-start justify-between gap-4 mb-7">
         <div className="w-11 h-11 flex items-center justify-center bg-cream text-green text-xl transition-all duration-300 group-hover:bg-green group-hover:text-white">
           {icon}

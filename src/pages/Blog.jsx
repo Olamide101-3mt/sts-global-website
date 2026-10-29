@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
+import SEO from "../components/SEO"
 
 const POSTS = [
   {
@@ -101,6 +102,10 @@ export default function Blog() {
 
   return (
     <main className="bg-cream min-h-screen">
+      <SEO title = "Solar, Security, CCTV, PABX INTERCOMM, Elevation  lift, Solar Water Pump and Automation Guides"
+        description= "Read practical guides from STS Global on solar energy, CCTV, electric fencing, automated gates, intercom systems and smart home technology."
+        path ="/blog"
+        />
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
         {/* PAGE INTRO */}
         <Reveal>
@@ -127,11 +132,8 @@ export default function Blog() {
           <article className="group grid md:grid-cols-[1.1fr_0.9fr] border border-grey-line bg-white mb-14 overflow-hidden transition-all duration-300 hover:shadow-xl">
             <div className="overflow-hidden">
               <div className="h-full transition-transform duration-500 group-hover:scale-[1.02]">
-                <img
-  src={featuredPost.image}
-  alt={featuredPost.title}
-  className="w-full aspect-[16/10] object-cover"
-/>
+                <img src={featuredPost.image} alt={featuredPost.title}className="w-full aspect-[16/10] object-cover"
+              />
               </div>
             </div>
 
