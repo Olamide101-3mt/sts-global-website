@@ -60,11 +60,14 @@ export default function Contact() {
   return (
    
     <section className="py-16 md:py-20">
-       <SEO title= "Contact Service Technology Solutions Global in Ikorodu, Lagos, Nigeria"
-      description= "Contact STS Global in Ikorodu, Lagos, for enquiries about solar installations, CCTV, electric fencing, access control and automation services."
-      path ="/contact"
+      <SEO title="Contact STS Global in Ikorodu"
+        description="Contact STS Global in Ikorodu, Lagos, for enquiries about solar installations, CCTV, electric fencing, access control and automation services."
+        path="/contact"
+        
       />
+    
       <div className="max-w-6xl mx-auto px-6">
+        
         <Reveal>
           <div className="text-green text-xs font-semibold tracking-widest uppercase mb-3">Get in touch</div>
           <h1 className="text-[34px] mb-8">Talk to us about your project</h1>

@@ -42,7 +42,7 @@ export default function About() {
       <SEO title = "About Service Technology Solutions Global Ikorodu, Lagos."   
         description = "Learn about STS Global and our solar energy, security, communication and automation solutions for homes and businesses in Ikorodu,Lagos, Nigeria"
         path ="/about"
-      />
+      /> 
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
         {/* =========================================================
             INTRODUCTION

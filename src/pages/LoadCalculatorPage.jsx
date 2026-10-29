@@ -217,7 +217,7 @@ export default function LoadCalculator() {
       <SEO title="Solar Load Calculator"
         description="Estimate your appliances' power requirements with the Service Technology Solutions Global load calculator to help plan a suitable solar inverter and battery system."
         path="/load-calculator"
-      />  
+      />   
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Header */}

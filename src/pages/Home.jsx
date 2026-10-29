@@ -27,7 +27,7 @@ export default function Home() {
       Solutions in Ikorodu, Lagos, Nigeria"
       description="Explore solar power systems, CCTV, electric fencing, access control and automation solutions from STS Global in Ikorodu, Lagos."
       path="/"
-    />
+    /> 
 
 {/* ==================== HERO ==================== */}
 

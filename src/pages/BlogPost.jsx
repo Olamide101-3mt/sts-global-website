@@ -253,7 +253,7 @@ export default function BlogPost() {
         <SEO title ="Solar, Security, CCTV, PABX INTERCOMM,           Elevation  lift, Solar Water Pump and Automation Guides"
          description = "Read practical guides from STS Global on solar energy, CCTV, electric fencing, automated gates, intercom systems and smart home technology."
          path="/blog/:slug"
-        />
+        /> 
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl font-semibold text-navy mb-4">
             Article not found

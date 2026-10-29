@@ -258,7 +258,7 @@ export default function Reviews() {
       <SEO title="Customer Reviews and Feedback"
         description="Read customer feedback about Service Technology Solutions Global's solar energy, security, PABX communication and automation solutions."
         path="/reviews"
-      />
+      /> 
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
           <div className="text-green text-xs font-semibold tracking-widest uppercase mb-3">Client reviews</div>
